@@ -17,4 +17,14 @@ class Pessoa extends Model
     {
         return $this->hasMany(telefone::class, 'pessoa_id');
     }
+
+    public static function indexLetra($letra)
+    {
+        return static::where('nome', 'LIKE', $letra . '%')->get();
+    }
+
+    public static function busca($criterio)
+    {
+        return static::where('nome', 'LIKE', '%' . $criterio . '%')->get();
+    }
 }
